@@ -2,7 +2,6 @@
     A Maze is made up of Cells
  */
 
-// unedited file given by the instructor
 public class Cell {
     private boolean visited;    // whether the cell has been visited (true if visited, false if not visited)
     private boolean right;      // whether the cell has a right border (true if a right boundary, false if an open right)
