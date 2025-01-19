@@ -1,6 +1,3 @@
-// Names: Anish Saraf & Joshua Sheih
-// x500's: saraf055 & sheih004
-
 import java.util.*;
 import java.io.*;
 import java.util.Random;
@@ -20,9 +17,6 @@ public class MyMaze {
             }
         }
     }
-
-    /* TODO: Create a new maze using the algorithm found in the writeup. */
-
 
     public static MyMaze makeMaze(int rows, int cols) { //creates a random maze with given size
         MyMaze newMaze = new MyMaze(rows, cols);
@@ -107,7 +101,6 @@ public class MyMaze {
         return newMaze;
     }
 
-    /* TODO: Print a representation of the maze to the terminal */
     public void printMaze(boolean path) { //prints a visual representation of the maze
         for (int i = 0; i < maze[0].length; i++) { //prints the top row
             System.out.print("|---");
@@ -156,7 +149,6 @@ public class MyMaze {
         //System.out.println("|");
     }
 
-    /* TODO: Solve the maze using the algorithm found in the writeup. */
     public void solveMaze() { //this method solves the maze made in makeMaze
 
         Queue<int[]> queue = new LinkedList<int[]>(); //uses a queue to store the elements
@@ -226,41 +218,67 @@ public class MyMaze {
     }
 
     public static void main(String[] args) {
-        MyMaze myMaze1 = makeMaze(3, 3);    // black box testing for making and solving the
-        System.out.println("Make maze for 5 x 20: \n"); // 5 rows x 20 columns maze (rectangular)
-        myMaze1.printMaze(false);
-        System.out.println();
-        System.out.println("Solved maze for 5 x 20: \n");
-        myMaze1.solveMaze();
 
-        System.out.println();
+        Scanner scanner = new Scanner(System.in);
+        boolean continueCreating = true;
 
-        MyMaze myMaze2 = makeMaze(10, 10);    // black box testing for making and solving the
-        System.out.println("Make maze for 10 x 10: \n"); // 10 rows x 10 columns maze (square)
-        myMaze2.printMaze(false);
-        System.out.println();
-        System.out.println("Solved maze for 10 x 10: \n");
-        myMaze2.solveMaze();
+        while (continueCreating) {
+            System.out.print("Enter the vertical size of the maze: ");
+            int rows = scanner.nextInt();
 
-        System.out.println();
+            System.out.print("Enter the horizontal size of the maze: ");
+            int cols = scanner.nextInt();
 
-//        // starting the glass box (white box) testing for makeMaze method
-//
-//        Random r = new Random();
-//        r.setSeed(1);
-//        MyMaze myMaze3 = makeMaze(2, 2);
-//        myMaze3.printMaze(false);
+            MyMaze myMaze = makeMaze(rows, cols);
 
-        // testing for cell class
-        Cell newCell = new Cell();
-        System.out.println(newCell.getVisited() == false); // cell should be not visited when object first created
-        System.out.println(newCell.getRight() == true); // cell should have right wall when object first created
-        System.out.println(newCell.getBottom() == true); //  cell should have bottom wall when object first created
-        newCell.setVisited(true);
-        newCell.setRight(false);
-        newCell.setBottom(false);
-        System.out.println(newCell.getVisited() == true); // cell should now be visited
-        System.out.println(newCell.getRight() == false); // cell should now not have right wall
-        System.out.println(newCell.getBottom() == false); // cell should now not have bottom wall
+            System.out.println("Generated Maze:");
+            myMaze.printMaze(false);
+
+            System.out.println("\nSolved Maze:");
+            myMaze.solveMaze();
+
+            System.out.print("Would you like to create another maze? (yes/no): ");
+            String response = scanner.next().trim().toLowerCase();
+            continueCreating = response.equals("yes");
+        }
+        System.out.println("Thank you for using Maze-Creator-Solver!");
+        scanner.close();
+        
+        // MyMaze myMaze1 = makeMaze(3, 3);    // black box testing for making and solving the
+        // System.out.println("Make maze for 5 x 20: \n"); // 5 rows x 20 columns maze (rectangular)
+        // myMaze1.printMaze(false);
+        // System.out.println();
+        // System.out.println("Solved maze for 5 x 20: \n");
+        // myMaze1.solveMaze();
+
+        // System.out.println();
+
+        // MyMaze myMaze2 = makeMaze(10, 10);    // black box testing for making and solving the
+        // System.out.println("Make maze for 10 x 10: \n"); // 10 rows x 10 columns maze (square)
+        // myMaze2.printMaze(false);
+        // System.out.println();
+        // System.out.println("Solved maze for 10 x 10: \n");
+        // myMaze2.solveMaze();
+
+        // System.out.println();
+
+        //    // starting the glass box (white box) testing for makeMaze method
+
+        //    Random r = new Random();
+        //    r.setSeed(1);
+        //    MyMaze myMaze3 = makeMaze(2, 2);
+        // myMaze3.printMaze(false);
+
+        // // testing for cell class
+        // Cell newCell = new Cell();
+        // System.out.println(newCell.getVisited() == false); // cell should be not visited when object first created
+        // System.out.println(newCell.getRight() == true); // cell should have right wall when object first created
+        // System.out.println(newCell.getBottom() == true); //  cell should have bottom wall when object first created
+        // newCell.setVisited(true);
+        // newCell.setRight(false);
+        // newCell.setBottom(false);
+        // System.out.println(newCell.getVisited() == true); // cell should now be visited
+        // System.out.println(newCell.getRight() == false); // cell should now not have right wall
+        // System.out.println(newCell.getBottom() == false); // cell should now not have bottom wall
     }
 }
