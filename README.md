@@ -16,3 +16,5 @@ Maze-Creator-Solver is a Java-based project designed to generate and solve mazes
 - **Cell.java**: Defines the structure and properties of each cell, like whether it has been visited and its wall configuration.
 - **MyMaze.java**: Handles the creation and solving of the maze. It uses logical operations and randomization to ensure the mazes are both functional and unique.
 
+## Screenshot
+![Maze Screenshot](screenshots/MazeScreenshot.png)
